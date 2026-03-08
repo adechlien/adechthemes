@@ -83,7 +83,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-10 border-t border-adech-swamp-1 pt-4 px-4">
-          <p className="text-left text-xs text-adech-boulevard-3">
+          <p className="text-center sm:text-left text-xs text-adech-boulevard-3">
             © {year} Adech Theme. All rights reserved.
           </p>
         </div>

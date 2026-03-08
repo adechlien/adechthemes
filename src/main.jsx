@@ -50,7 +50,7 @@ export function Root() {
   }, [activeTab]);
 
   return (
-    <div className="bg-adech-swamp-1 text-adech-boulevard-1 font-bellota min-h-screen">
+    <div className="min-h-screen">
       <div className="max-w-7xl mx-auto">
         <Header activeTab={activeTab} onChangeTab={setActiveTab} />
         <main className="mx-8 sm:px-16 py-16 sm:py-32">
