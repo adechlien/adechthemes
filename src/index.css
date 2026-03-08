@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bellota+Text:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+/*@config "../tailwind.config.cjs";*/
+@import 'tailwindcss';
+@import "@adech/themes/superior/tailwind";
+
+.font-bebas {
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.font-bellota {
+  font-family: "Bellota Text", sans-serif;
+}
+
+@keyframes tabEnter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-tabEnter {
+  animation: tabEnter 300ms ease-out;
+}
