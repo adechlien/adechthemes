@@ -1,6 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useNpmVersion } from "../hooks/useNpmVersion";
-import { IconCircleChevronDownFilled } from "@tabler/icons-react";
 
 const TABS = [
   { id: "home", label: "Home" },
@@ -16,9 +15,18 @@ export default function Header({ activeTab, onChangeTab }) {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  const linkBase = "text-base transition px-4 py-1 rounded-lg uppercase font-semibold";
-  const linkActive = "bg-adech-boulevard-4 text-adech-swamp-1 font-semibold";
-  const linkIdle = "text-adech-boulevard-4 hover:bg-adech-swamp-1 hover:cursor-pointer";
+  const navTabRefs = useRef({});
+  const [sliderStyle, setSliderStyle] = useState({
+    width: 0,
+    height: 0,
+    x: 0,
+    y: 0,
+    opacity: 0,
+  });
+
+  const linkBase = "relative z-10 text-base transition px-4 py-1 rounded-lg uppercase font-semibold";
+  const linkActive = "text-adech-swamp-1";
+  const linkIdle = "text-adech-boulevard-4 hover:cursor-pointer";
 
   const activeItem = useMemo(
     () => TABS.find((tab) => tab.id === activeTab) || TABS[0],
@@ -29,6 +37,32 @@ export default function Header({ activeTab, onChangeTab }) {
     onChangeTab(tab);
     setOpen(false);
   };
+
+  const updateSlider = () => {
+    const activeButton = navTabRefs.current[activeTab];
+    if (!activeButton) return;
+
+    setSliderStyle({
+      width: activeButton.offsetWidth,
+      height: activeButton.offsetHeight,
+      x: activeButton.offsetLeft,
+      y: activeButton.offsetTop,
+      opacity: 1,
+    });
+  };
+
+  useLayoutEffect(() => {
+    updateSlider();
+  }, [activeTab]);
+
+  useEffect(() => {
+    updateSlider();
+
+    const onResize = () => updateSlider();
+    window.addEventListener("resize", onResize);
+
+    return () => window.removeEventListener("resize", onResize);
+  }, [activeTab]);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -54,7 +88,6 @@ export default function Header({ activeTab, onChangeTab }) {
 
   return (
     <header className="flex items-center justify-between gap-4 p-4">
-      {/* Branding */}
       <button
         onClick={() => go("home")}
         className="flex min-w-0 items-center gap-2"
@@ -67,14 +100,26 @@ export default function Header({ activeTab, onChangeTab }) {
         </span>
       </button>
 
-      {/* Desktop Navigation */}
-      <nav className="hidden md:flex gap-2 font-bellota bg-adech-swamp-3 rounded-xl p-1">
+      <nav className="relative hidden md:flex gap-2 font-bellota bg-adech-swamp-3 rounded-xl p-1">
+        <span
+          className="pointer-events-none absolute left-0 top-0 rounded-lg bg-adech-boulevard-4 transition-all duration-300 ease-out"
+          style={{
+            width: `${sliderStyle.width}px`,
+            height: `${sliderStyle.height}px`,
+            transform: `translate(${sliderStyle.x}px, ${sliderStyle.y}px)`,
+            opacity: sliderStyle.opacity,
+          }}
+        />
+
         {TABS.map((tab) => {
           const isCurrent = activeTab === tab.id;
 
           return (
             <button
               key={tab.id}
+              ref={(node) => {
+                if (node) navTabRefs.current[tab.id] = node;
+              }}
               type="button"
               onClick={() => go(tab.id)}
               className={`${linkBase} ${isCurrent ? linkActive : linkIdle}`}
@@ -86,7 +131,6 @@ export default function Header({ activeTab, onChangeTab }) {
         })}
       </nav>
 
-      {/* Mobile Navigation */}
       <div className="relative md:hidden" ref={dropdownRef}>
         <button
           type="button"
@@ -95,7 +139,7 @@ export default function Header({ activeTab, onChangeTab }) {
           aria-haspopup="menu"
           aria-expanded={open}
         >
-          <span className={`${linkBase} ${linkActive}`}>
+          <span className="text-base px-4 py-1 rounded-lg uppercase font-semibold bg-adech-boulevard-4 text-adech-swamp-1">
             {activeItem.label}
           </span>
         </button>
@@ -120,7 +164,11 @@ export default function Header({ activeTab, onChangeTab }) {
                   key={tab.id}
                   type="button"
                   onClick={() => go(tab.id)}
-                  className={`${linkBase} text-right ${isCurrent ? linkActive : linkIdle}`}
+                  className={`text-base transition px-4 py-1 rounded-lg uppercase font-semibold text-right ${
+                    isCurrent
+                      ? "bg-adech-boulevard-4 text-adech-swamp-1"
+                      : "text-adech-boulevard-4 hover:bg-adech-swamp-1 hover:cursor-pointer"
+                  }`}
                   aria-current={isCurrent ? "page" : undefined}
                   role="menuitem"
                 >
@@ -131,14 +179,6 @@ export default function Header({ activeTab, onChangeTab }) {
           </nav>
         </div>
       </div>
-
-      {/* Options */}
-      {/*
-      <div className="flex items-center gap-2 text-transparent">
-        <IconCircleChevronDownFilled size={20} />
-        <span className="text-lg font-semibold">Superior</span>
-      </div>
-      */}
     </header>
   );
 }

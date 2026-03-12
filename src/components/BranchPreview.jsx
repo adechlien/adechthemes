@@ -9,19 +9,19 @@ const PALETTE_META = {
   },
   venomous: {
     name: "Venomous",
-    description: "Nature, ancient presence, and the magical force of everything we cannot fully explain.",
+    description: "The nature, ancient presence, and the magical force of everything we cannot fully explain.",
   },
   swamp: {
     name: "Swamp",
-    description: "Calm, breathing space, and the quiet strength of staying with yourself.",
+    description: "The calm, breathing space, and the quiet strength of staying with yourself.",
   },
   sunny: {
     name: "Sunny",
-    description: "La emocion repentina que te da sin explicacion alguna. Te da energia.",
+    description: "The warmth, unexpected emotion, and that quiet energy that arrives without explanation.",
   },
   void: {
     name: "Void",
-    description: "La indiferencia, el vacio, y la aceptacion de lo que no se puede cambiar.",
+    description: "The indifference, emptiness, and the quiet acceptance of what cannot be changed.",
   },
 };
 
@@ -187,13 +187,13 @@ export default function BranchesSection() {
           <h2 className="font-bebas text-5xl">Superior</h2>
 
           <p className="text-sm text-adech-boulevard-4">
-            <span className="font-semibold">Superior</span> is one of the themes in
-            Adech Themes. It is structured as a branch made of smaller subbranches
-            or palettes, each one grouping related colors with its own visual
+            <span className="font-semibold">Superior</span> is the main theme in
+            Adech Themes. just like any branch in Adech, it is structured as made of smaller subbranches
+            (or palettes), each one grouping related colors with its own visual
             character.
           </p>
 
-          <p className="text-sm leading-relaxed text-adech-boulevard-4">
+          {/* <p className="text-sm leading-relaxed text-adech-boulevard-4">
             This branch reflects on the way our surroundings shape what we feel and
             how we move through life. <span className="font-semibold">Boulevard</span>{" "}
             represents the city: its scale, its cold beauty, and the loneliness we
@@ -205,7 +205,7 @@ export default function BranchesSection() {
             of the day, it is only ourselves left with our breath, our thoughts, and
             the decision to keep going. As long as we still have ourselves, there is
             no problem we cannot face.
-          </p>
+          </p>*/}
         </div>
 
       </div>

@@ -1,16 +1,28 @@
-# React + Vite
+# Adech
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Adech is a color ecosystem built around the idea of **branches**: independent theme systems designed to be used across both **projects** and **workspaces**.
 
-Currently, two official plugins are available:
+Instead of being limited to a single theme or a single palette, Adech is structured to grow as a collection of branches, where each one can be adopted in different environments depending on its purpose. Some branches are meant to be integrated into websites, apps, design systems, and frontend projects. Others are meant to become full workspace themes for tools such as editors, creative software, or productivity platforms.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The goal of Adech is to make color reusable, portable, and consistent across different contexts. A branch can live as design tokens in code, as styling utilities in development workflows, or as a complete visual identity inside a workspace.
 
-## React Compiler
+## What Adech offers
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- A branch-based ecosystem for theme creation
+- Reusable color systems for digital projects
+- Theme implementations for workspaces and tools
+- A foundation that can scale from code to interface
 
-## Expanding the ESLint configuration
+## Where Adech can be used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Adech is built to support two main areas:
+
+### Projects
+Websites, apps, design systems, and frontend workflows.
+
+### Workspaces
+Code editors, tools, and platforms where a branch becomes part of the working environment.
+
+## Philosophy
+
+Adech is not just a set of colors. It is a growing system for building visual identities that can move between products and spaces while preserving coherence.

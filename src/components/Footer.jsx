@@ -51,8 +51,8 @@ export default function Footer() {
             <div className="min-w-0 text-left">
               <p className="text-base font-semibold sm:text-lg">Adech Theme</p>
               <p className="mt-1 text-sm leading-relaxed text-adech-boulevard-3">
-                A cold color system for editors and interfaces. Built with tokens
-                ready for Tailwind and CSS variables.
+                A portable theme ecosystem built around reusable branches and design
+                tokens for interfaces and workspaces.
               </p>
             </div>
           </div>
@@ -84,7 +84,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-10 border-t border-adech-swamp-1 pt-4 px-4">
           <p className="text-center sm:text-left text-xs text-adech-boulevard-3">
-            © {year} Adech Theme. All rights reserved.
+            © {year} Adech. All rights reserved.
           </p>
         </div>
       </div>
