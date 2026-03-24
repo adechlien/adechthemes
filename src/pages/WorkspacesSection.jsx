@@ -67,8 +67,7 @@ export default function WorkspacesSection() {
             Workspaces
           </h2>
           <p className="text-sm text-adech-boulevard-4 max-w-lg">
-            Ports oficiales del tema para tus editores. Inspirado en el enfoque de
-            “Ports” de Nord (cards con instalación y docs).
+            Official ports for your workspaces.
           </p>
         </div>
       </div>
